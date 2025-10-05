@@ -26,8 +26,8 @@ endian = 'little'
 
 [built-in options]
 prefix = '{{PREFIX}}/'
-c_args = ['-fPIC','-I{{INCLUDEDIR}}']
-cpp_args = ['-fPIC','-I{{INCLUDEDIR}}']
+c_args = [{{INCLUDEARGS}}]
+cpp_args = [{{INCLUDEARGS}}]
 c_link_args = ['-fPIE','-L{{LIBDIR}}']
 
 pkg_config_path = '{{LIBDIR}}/pkgconfig'

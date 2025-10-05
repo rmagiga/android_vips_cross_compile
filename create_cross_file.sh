@@ -10,6 +10,5 @@ sed \
   -e "s|{{TOOLCHAIN}}|$TOOLCHAIN|g" \
   -e "s|{{PREFIX}}|$PREFIX|g" \
   -e "s|{{LIBDIR}}|$LIBDIR|g" \
-  -e "s|{{INCLUDEDIR}}|$INCLUDEDIR|g" \
-  cross_file.txt.template > $SRCDIR/libvips-$LIBVIPS_VERSION/cross_file.txt
-
+  -e "s|{{INCLUDEARGS}}|$INCLUDEARGS|g" \
+  cross_file.txt.template > cross_file.txt

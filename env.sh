@@ -8,7 +8,8 @@ export OUTDIR=$HOME/local
 export NDK_VERSION=r27d
 export ANDROID_API=21
 
-export LIBVIPS_VERSION="v8.17.2"
+export LIBVIPS_VERSION="8.17.2"
+export EXPAT_VERSION="2_7_3"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
@@ -39,10 +40,11 @@ export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
 export STRIP=$TOOLCHAIN/bin/llvm-strip
 
 export LD_LIBRARY_PATH=$LIBDIR
-export CFLAGS="-fPIC -I$INCLUDEDIR"
-export CXXFLAGS="-fPIC -I$INCLUDEDIR"
+export CFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$LIBDIR/glib-2.0/include"
+export CXXFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$LIBDIR/glib-2.0/include"
 export LDFLAGS="-fPIC -pie -L$LD_LIBRARY_PATH"
 export LIBS="-L$LD_LIBRARY_PATH"
+export INCLUDEARGS="'-fPIC','-I$INCLUDEDIR','-I$INCLUDEDIR/glib-2.0','-I$LIBDIR/glib-2.0/include'"
 
 export PKG_CONFIG=/usr/bin/pkg-config
 export PKG_CONFIG_PATH=$LIBDIR/pkgconfig
