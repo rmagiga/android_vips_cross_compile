@@ -30,3 +30,16 @@ extract() {
         *) echo "Unsupported archive format: $archive" ; exit 1 ;;
     esac
 }
+
+create_cross_file() {
+    local template_file="$1"
+    local cross_file="$2"
+sed \
+  -e "s|{{ANDROID_API}}|$ANDROID_API|g" \
+  -e "s|{{TARGET}}|$TARGET|g" \
+  -e "s|{{TOOLCHAIN}}|$TOOLCHAIN|g" \
+  -e "s|{{PREFIX}}|$PREFIX|g" \
+  -e "s|{{LIBDIR}}|$LIBDIR|g" \
+  -e "s|{{INCLUDEARGS}}|$INCLUDEARGS|g" \
+  $template_file > $cross_file
+}
