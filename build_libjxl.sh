@@ -1,0 +1,43 @@
+#!/bin/bash
+
+SCRIPTDIR=$(cd $(dirname $0); pwd)
+. $SCRIPTDIR/env.sh
+. $SCRIPTDIR/build_common.sh
+
+DOWNLOAD_FILE=${DOWNLOADDIR}/libjxl-$LIBJXL_VERSION.tar.gz
+
+download https://github.com/libjxl/libjxl/archive/refs/tags/v$LIBJXL_VERSION.tar.gz $DOWNLOAD_FILE
+extract $DOWNLOAD_FILE $SRCDIR/libjxl-$LIBJXL_VERSION
+
+cd $SRCDIR/libjxl-$LIBJXL_VERSION
+./deps.sh
+
+mkdir -p build && cd build
+cmake -G"Unix Makefiles" \
+  -DANDROID_ABI=arm64-v8a \
+  -DANDROID_ARM_MODE=arm \
+  -DANDROID_PLATFORM=android-${ANDROID_API} \
+  -DANDROID_TOOLCHAIN=${TOOLCHAIN} \
+  -DCMAKE_ASM_FLAGS="--target=aarch64-linux-android${ANDROID_API}" \
+  -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
+  -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_SHARED_LIBS=ON \
+  -DBUILD_TESTING=OFF \
+  -DJPEGXL_ENABLE_TOOLS=OFF \
+  -DJPEGXL_ENABLE_DEVTOOLS=OFF \
+  -DJPEGXL_ENABLE_EXAMPLES=OFF \
+  -DJPEGXL_ENABLE_MANPAGES=OFF \
+  -DJPEGXL_ENABLE_BENCHMARK=OFF \
+  -DJPEGXL_ENABLE_PLUGINS=OFF \
+  -DJPEGXL_ENABLE_VIEWERS=OFF \
+  -DJPEGXL_ENABLE_SJPEG=OFF \
+  -DJPEGXL_ENABLE_OPENEXR=OFF \
+  -DJPEGXL_ENABLE_JPEGLI=OFF \
+  -DJPEGXL_ENABLE_DOXYGEN=OFF \
+  -DJPEGXL_ENABLE_JNI=OFF \
+  -DJPEGXL_FORCE_SYSTEM_BROTLI=OFF \
+  $SRCDIR/libjxl-$LIBJXL_VERSION
+
+cmake --build . -- -j$(nproc)
+cmake --install .
