@@ -22,5 +22,5 @@ cmake -G"Unix Makefiles" \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   $SRCDIR/libjpeg-turbo-$LIBJPEG_TURBO_VERSION
 
-make
+make -j$(nproc)
 make install
