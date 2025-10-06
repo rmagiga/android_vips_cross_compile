@@ -16,6 +16,7 @@ export OPENJPEG_VERSION="2.5.4"
 export LIBSPNG_VERSION="0.7.4"
 export LIBTIFF_VERSION="4.7.1"
 export LIBAOM_VERSION="3.13.1"
+export LIBDE265_VERSION="1.0.16"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
