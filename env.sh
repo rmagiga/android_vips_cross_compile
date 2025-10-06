@@ -12,6 +12,7 @@ export LIBVIPS_VERSION="8.17.2"
 export EXPAT_VERSION="2_7_3"
 export LIBJPEG_TURBO_VERSION="3.1.2"
 export LIBJXL_VERSION="0.11.1"
+export OPENJPEG_VERSION="2.5.4"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
