@@ -53,7 +53,7 @@ export CFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$LIBDIR/glib-2.0/inc
 export CXXFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$LIBDIR/glib-2.0/include"
 export LDFLAGS="-fPIC -pie -L$LD_LIBRARY_PATH"
 export LIBS="-L$LD_LIBRARY_PATH"
-export INCLUDEARGS="'-fPIC','-I$INCLUDEDIR','-I$INCLUDEDIR/glib-2.0','-I$LIBDIR/glib-2.0/include'"
+export INCLUDEARGS="'-fPIC','-I$INCLUDEDIR','-I$INCLUDEDIR/glib-2.0','-I$LIBDIR/glib-2.0/include','-I$INCLUDEDIR/openjpeg-2.5'"
 
 export PKG_CONFIG=/usr/bin/pkg-config
 export PKG_CONFIG_PATH=$LIBDIR/pkgconfig

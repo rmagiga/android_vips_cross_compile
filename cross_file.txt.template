@@ -17,6 +17,7 @@ pkg-config = '/usr/bin/pkg-config'
 [properties]
 sys_root = '{{TOOLCHAIN}}/sysroot'
 pkg_config_lib_dir = '{{LIBDIR}}/pkgconfig'
+pkg_config_path = '{{LIBDIR}}/pkgconfig'
 
 [host_machine]
 system = 'android'
@@ -30,6 +31,6 @@ c_args = [{{INCLUDEARGS}}]
 cpp_args = [{{INCLUDEARGS}}]
 c_link_args = ['-fPIE','-L{{LIBDIR}}']
 
-pkg_config_path = '{{LIBDIR}}/pkgconfig'
+cmake_prefix_path = '{{PREFIX}}'
 
 default_library = 'both'
