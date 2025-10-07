@@ -20,6 +20,7 @@ export LIBDE265_VERSION="1.0.16"
 export LIBX265_VERSION="4.1"
 export LIBHEIF_VERSION="1.20.2"
 export LIBWEBP_VERSION="1.6.0"
+export LIBCGIF_VERSION="0.5.0"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
