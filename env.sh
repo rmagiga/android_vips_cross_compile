@@ -21,6 +21,12 @@ export LIBX265_VERSION="4.1"
 export LIBHEIF_VERSION="1.20.2"
 export LIBWEBP_VERSION="1.6.0"
 export LIBCGIF_VERSION="0.5.0"
+export CAIRO_VERSION="1.18.4"
+export LIBRSVG_VERSION="2.61.1"
+export HARFBUZZ_VERSION="12.1.0"
+export FREETYPE_VERSION="2.14.1"
+export LIBXML2_VERSION="2.15.0"
+export PANGO_VERSION="1.57.0"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
@@ -51,11 +57,14 @@ export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
 export STRIP=$TOOLCHAIN/bin/llvm-strip
 
 export LD_LIBRARY_PATH=$LIBDIR
-export CFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$LIBDIR/glib-2.0/include"
-export CXXFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$LIBDIR/glib-2.0/include"
+export CFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$INCLUDEDIR/libpng16 -I$INCLUDEDIR/freetype2 -I$INCLUDEDIR/cairo -I$INCLUDEDIR/pango-1.0 -I$INCLUDEDIR/libxml2 -I$INCLUDEDIR/harfbuzz -I$INCLUDEDIR/librsvg-2.0 -I$LIBDIR/glib-2.0/include"
+export CXXFLAGS=$CFLAGS
 export LDFLAGS="-fPIC -pie -L$LD_LIBRARY_PATH"
 export LIBS="-L$LD_LIBRARY_PATH"
-export INCLUDEARGS="'-fPIC','-I$INCLUDEDIR','-I$INCLUDEDIR/glib-2.0','-I$LIBDIR/glib-2.0/include','-I$INCLUDEDIR/openjpeg-2.5'"
+export INCLUDEARGS="'-fPIC','-I$INCLUDEDIR','-I$INCLUDEDIR/glib-2.0','-I$LIBDIR/glib-2.0/include','-I$INCLUDEDIR/openjpeg-2.5','-I$INCLUDEDIR/libpng16','-I$INCLUDEDIR/freetype2','-I$INCLUDEDIR/cairo','-I$INCLUDEDIR/pango-1.0','-I$INCLUDEDIR/libxml2','-I$INCLUDEDIR/harfbuzz','-I$INCLUDEDIR/librsvg-2.0'"
 
 export PKG_CONFIG=/usr/bin/pkg-config
 export PKG_CONFIG_PATH=$LIBDIR/pkgconfig
+
+# rust
+export CARGO_BUILD_TARGET=$TARGET
