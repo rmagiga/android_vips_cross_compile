@@ -3,9 +3,13 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 . $SCRIPTDIR/env.sh
 . $SCRIPTDIR/build_common.sh
 
+# libjpeg
 $SCRIPTDIR/build_expat.sh
 $SCRIPTDIR/build_libjpeg_turbo.sh
+# jxl
 $SCRIPTDIR/build_libjxl.sh
+# openjpeg
+$SCRIPTDIR/build_openjpeg.sh
 
 
 # svg
