@@ -56,12 +56,37 @@ export LD=$TOOLCHAIN/bin/ld
 export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
 export STRIP=$TOOLCHAIN/bin/llvm-strip
 
+
+
 export LD_LIBRARY_PATH=$LIBDIR
-export CFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$INCLUDEDIR/libpng16 -I$INCLUDEDIR/freetype2 -I$INCLUDEDIR/cairo -I$INCLUDEDIR/pango-1.0 -I$INCLUDEDIR/libxml2 -I$INCLUDEDIR/harfbuzz -I$INCLUDEDIR/librsvg-2.0 -I$LIBDIR/glib-2.0/include"
+
+# 共通のコンパイルフラグリスト
+COMMON_FLAGS=(
+    "-fPIC"
+    "-I$INCLUDEDIR"
+    "-I$INCLUDEDIR/glib-2.0"
+    "-I$LIBDIR/glib-2.0/include"
+    "-I$INCLUDEDIR/openjpeg-2.5"
+    "-I$INCLUDEDIR/libpng16"
+    "-I$INCLUDEDIR/freetype2"
+    "-I$INCLUDEDIR/cairo"
+    "-I$INCLUDEDIR/pango-1.0"
+    "-I$INCLUDEDIR/libxml2"
+    "-I$INCLUDEDIR/harfbuzz"
+    "-I$INCLUDEDIR/librsvg-2.0"
+)
+
+# INCLUDEARGSを構築
+COMMON_QUOTED=()
+for i in "${COMMON_FLAGS[@]}"; do
+    COMMON_QUOTED+=("'$i'")
+done
+
+export CFLAGS="${COMMON_FLAGS[*]}"
 export CXXFLAGS=$CFLAGS
 export LDFLAGS="-fPIC -pie -L$LD_LIBRARY_PATH"
 export LIBS="-L$LD_LIBRARY_PATH"
-export INCLUDEARGS="'-fPIC','-I$INCLUDEDIR','-I$INCLUDEDIR/glib-2.0','-I$LIBDIR/glib-2.0/include','-I$INCLUDEDIR/openjpeg-2.5','-I$INCLUDEDIR/libpng16','-I$INCLUDEDIR/freetype2','-I$INCLUDEDIR/cairo','-I$INCLUDEDIR/pango-1.0','-I$INCLUDEDIR/libxml2','-I$INCLUDEDIR/harfbuzz','-I$INCLUDEDIR/librsvg-2.0'"
+export INCLUDEARGS=$(IFS=,; echo "${COMMON_QUOTED[*]}")
 
 export PKG_CONFIG=/usr/bin/pkg-config
 export PKG_CONFIG_PATH=$LIBDIR/pkgconfig
