@@ -10,7 +10,8 @@ $SCRIPTDIR/build_libjpeg_turbo.sh
 $SCRIPTDIR/build_libjxl.sh
 # openjpeg
 $SCRIPTDIR/build_openjpeg.sh
-
+# libspng
+$SCRIPTDIR/build_libspng.sh
 
 # svg
 $SCRIPTDIR/build_cairo.sh
