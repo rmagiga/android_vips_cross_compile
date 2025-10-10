@@ -46,7 +46,7 @@ export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 export BUILD_SYS=x86_64-linux-gnu
 export SYSROOT=$TOOLCHAIN/sysroot/
 
-export TARGET=aarch64-linux-android
+export TARGET="aarch64-linux-android"
 
 export AR=$TOOLCHAIN/bin/llvm-ar
 export CC=$TOOLCHAIN/bin/$TARGET$ANDROID_API-clang

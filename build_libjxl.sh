@@ -4,21 +4,23 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 . $SCRIPTDIR/env.sh
 . $SCRIPTDIR/build_common.sh
 
+URL="https://github.com/libjxl/libjxl/archive/refs/tags/v$LIBJXL_VERSION.tar.gz"
 DOWNLOAD_FILE=${DOWNLOADDIR}/libjxl-$LIBJXL_VERSION.tar.gz
+EXTRACT_DIR=$SRCDIR/libjxl-$LIBJXL_VERSION
 
-download https://github.com/libjxl/libjxl/archive/refs/tags/v$LIBJXL_VERSION.tar.gz $DOWNLOAD_FILE
-extract $DOWNLOAD_FILE $SRCDIR/libjxl-$LIBJXL_VERSION
+download $URL $DOWNLOAD_FILE
+extract $DOWNLOAD_FILE $EXTRACT_DIR
 
-cd $SRCDIR/libjxl-$LIBJXL_VERSION
+cd $EXTRACT_DIR
 ./deps.sh
 
 mkdir -p build && cd build
-cmake -G"Unix Makefiles" \
+cmake .. -G"Unix Makefiles" \
   -DANDROID_ABI=arm64-v8a \
   -DANDROID_ARM_MODE=arm \
   -DANDROID_PLATFORM=android-${ANDROID_API} \
   -DANDROID_TOOLCHAIN=${TOOLCHAIN} \
-  -DCMAKE_ASM_FLAGS="--target=aarch64-linux-android${ANDROID_API}" \
+  -DCMAKE_ASM_FLAGS="--target=${TARGET}${ANDROID_API}" \
   -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   -DCMAKE_BUILD_TYPE=Release \
@@ -36,8 +38,7 @@ cmake -G"Unix Makefiles" \
   -DJPEGXL_ENABLE_JPEGLI=OFF \
   -DJPEGXL_ENABLE_DOXYGEN=OFF \
   -DJPEGXL_ENABLE_JNI=OFF \
-  -DJPEGXL_FORCE_SYSTEM_BROTLI=OFF \
-  $SRCDIR/libjxl-$LIBJXL_VERSION
+  -DJPEGXL_FORCE_SYSTEM_BROTLI=OFF
 
 cmake --build . -- -j$(nproc)
 cmake --install .
