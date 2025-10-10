@@ -12,6 +12,8 @@ $SCRIPTDIR/build_libjxl.sh
 $SCRIPTDIR/build_openjpeg.sh
 # libspng
 $SCRIPTDIR/build_libspng.sh
+# libtiff
+$SCRIPTDIR/build_libtiff.sh
 
 # svg
 $SCRIPTDIR/build_cairo.sh
