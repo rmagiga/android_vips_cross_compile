@@ -21,6 +21,8 @@ $SCRIPTDIR/build_libx265.sh
 $SCRIPTDIR/build_libheif.sh
 #webp
 $SCRIPTDIR/build_libwebp.sh
+# gif
+$SCRIPTDIR/build_libcgif.sh
 
 # svg
 $SCRIPTDIR/build_cairo.sh
