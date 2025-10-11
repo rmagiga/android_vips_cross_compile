@@ -3,14 +3,14 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 . $SCRIPTDIR/env.sh
 . $SCRIPTDIR/build_common.sh
 
-https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz
-
+URL=https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$LIBWEBP_VERSION.tar.gz
 DOWNLOAD_FILE=${DOWNLOADDIR}/libwebp-$LIBWEBP_VERSION.tar.gz
-download https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$LIBWEBP_VERSION.tar.gz $DOWNLOAD_FILE
-extract $DOWNLOAD_FILE $SRCDIR/libwebp-$LIBWEBP_VERSION
+EXTRACT_DIR=$SRCDIR/libwebp-$LIBWEBP_VERSION
 
-cd $SRCDIR/libwebp-$LIBWEBP_VERSION
+download $URL $DOWNLOAD_FILE
+extract $DOWNLOAD_FILE $EXTRACT_DIR
 
+cd $EXTRACT_DIR
 ./autogen.sh
 ./configure --host=$TARGET \
 	--prefix=$PREFIX \

@@ -19,6 +19,8 @@ $SCRIPTDIR/build_libaom.sh
 $SCRIPTDIR/build_libde265.sh
 $SCRIPTDIR/build_libx265.sh
 $SCRIPTDIR/build_libheif.sh
+#webp
+$SCRIPTDIR/build_libwebp.sh
 
 # svg
 $SCRIPTDIR/build_cairo.sh
