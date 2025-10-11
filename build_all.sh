@@ -14,6 +14,11 @@ $SCRIPTDIR/build_openjpeg.sh
 $SCRIPTDIR/build_libspng.sh
 # libtiff
 $SCRIPTDIR/build_libtiff.sh
+# libheif
+$SCRIPTDIR/build_libaom.sh
+$SCRIPTDIR/build_libde265.sh
+$SCRIPTDIR/build_libx256.sh
+$SCRIPTDIR/build_libheif.sh
 
 # svg
 $SCRIPTDIR/build_cairo.sh
