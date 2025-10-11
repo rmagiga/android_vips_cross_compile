@@ -3,31 +3,54 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 . $SCRIPTDIR/env.sh
 . $SCRIPTDIR/build_common.sh
 
+URL=https://github.com/strukturag/libheif/archive/refs/tags/v$LIBHEIF_VERSION.tar.gz
 DOWNLOAD_FILE=${DOWNLOADDIR}/libheif-$LIBHEIF_VERSION.tar.gz
-download https://github.com/strukturag/libheif/archive/refs/tags/v1.20.2.tar.gz $DOWNLOAD_FILE
-extract $DOWNLOAD_FILE $SRCDIR/libheif-$LIBHEIF_VERSION
+EXTRACT_DIR=$SRCDIR/libheif-$LIBHEIF_VERSION
 
-cd $SRCDIR/libheif-$LIBHEIF_VERSION
+download $URL $DOWNLOAD_FILE
+extract $DOWNLOAD_FILE $EXTRACT_DIR
+
+cd $EXTRACT_DIR
 mkdir build-android && cd build-android
 cmake .. -G"Unix Makefiles" \
+  -DCMAKE_ASM_FLAGS="--target=${TARGET}${ANDROID_API}" \
   -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
-  -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-  -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
   -DANDROID_ABI=arm64-v8a \
+  -DANDROID_ARM_MODE=arm \
   -DANDROID_PLATFORM=android-${ANDROID_API} \
+  -DENABLE_PLUGIN_LOADING=OFF \
+  -DBUILD_TESTING=OFF \
+  -DWITH_EXAMPLES=OFF \
+  -DWITH_DAV1D=OFF \
+  -DWITH_GDK_PIXBUF=OFF \
+  -DWITH_RAV1E=OFF \
+  -DWITH_SvtEnc=OFF \
+  -DWITH_LIBDE265_PLUGIN=OFF \
+  -DWITH_X265_PLUGIN=OFF \
+  -DWITH_LIBSHARPYUV=OFF \
+  -DWITH_OpenH264_ENCODER=OFF \
+  -DWITH_OpenH264_DECODER=OFF \
+  -DWITH_JPEG_ENCODER=ON \
+  -DWITH_JPEG_DECODER=ON \
+  -DWITH_OpenJPEG_ENCODER=OFF \
+  -DWITH_OpenJPEG_DECODER=OFF \
+  -DCMAKE_PREFIX_PATH=${PREFIX} \
+  -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
   -DCMAKE_SYSTEM_NAME=Android \
   -DCMAKE_SYSTEM_VERSION=${ANDROID_API} \
   -DCMAKE_ANDROID_NDK=${ANDROID_NDK_HOME} \
-  -DWITH_EXAMPLES=OFF \
-  -DBUILD_TESTING=OFF \
+  -DAOM_INCLUDE_DIR=${PREFIX}/include \
+  -DAOM_LIBRARY=${PREFIX}/lib/libaom.so \
   -DTIFF_INCLUDE_DIR=${PREFIX}/include \
   -DTIFF_LIBRARY=${PREFIX}/lib/libtiff.so \
   -DX265_INCLUDE_DIR=${PREFIX}/include \
   -DX265_LIBRARY=${PREFIX}/lib/libx265.so \
   -DLIBDE265_INCLUDE_DIR=${PREFIX}/include \
   -DLIBDE265_LIBRARY=${PREFIX}/lib/libde265.so \
-  -DAOM_INCLUDE_DIR=${PREFIX}/include \
-  -DAOM_LIBRARY=${PREFIX}/lib/libaom.so
+  -DJPEG_INCLUDE_DIR=${PREFIX}/include \
+  -DJPEG_LIBRARY=${PREFIX}/lib/libjpeg.so \
+  -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+  -DCMAKE_BUILD_TYPE=Release
 
 make -j$(nproc)
 make install

@@ -17,7 +17,7 @@ $SCRIPTDIR/build_libtiff.sh
 # libheif
 $SCRIPTDIR/build_libaom.sh
 $SCRIPTDIR/build_libde265.sh
-$SCRIPTDIR/build_libx256.sh
+$SCRIPTDIR/build_libx265.sh
 $SCRIPTDIR/build_libheif.sh
 
 # svg
