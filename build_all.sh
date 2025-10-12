@@ -14,15 +14,15 @@ $SCRIPTDIR/build_openjpeg.sh
 $SCRIPTDIR/build_libspng.sh
 # libtiff
 $SCRIPTDIR/build_libtiff.sh
+# gif
+$SCRIPTDIR/build_libcgif.sh
+#webp
+$SCRIPTDIR/build_libwebp.sh
 # libheif
 $SCRIPTDIR/build_libaom.sh
 $SCRIPTDIR/build_libde265.sh
 $SCRIPTDIR/build_libx265.sh
 $SCRIPTDIR/build_libheif.sh
-#webp
-$SCRIPTDIR/build_libwebp.sh
-# gif
-$SCRIPTDIR/build_libcgif.sh
 
 # svg
 $SCRIPTDIR/build_libxml2.sh
