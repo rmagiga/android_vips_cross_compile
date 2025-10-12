@@ -5,7 +5,7 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 
 # libjpeg
 $SCRIPTDIR/build_expat.sh
-$SCRIPTDIR/build_libjpeg_turbo.sh
+$SCRIPTDIR/build_libjpegturbo.sh
 # jxl
 $SCRIPTDIR/build_libjxl.sh
 # openjpeg
