@@ -25,10 +25,11 @@ $SCRIPTDIR/build_libwebp.sh
 $SCRIPTDIR/build_libcgif.sh
 
 # svg
-$SCRIPTDIR/build_cairo.sh
+$SCRIPTDIR/build_libxml2.sh
 $SCRIPTDIR/build_freetype2.sh
 $SCRIPTDIR/build_harfbuzz.sh
-$SCRIPTDIR/build_libxml2.sh
+$SCRIPTDIR/build_pixman.sh
+$SCRIPTDIR/build_cairo.sh
 $SCRIPTDIR/build_pango.sh
 $SCRIPTDIR/build_librsvg.sh
 

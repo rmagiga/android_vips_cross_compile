@@ -32,8 +32,8 @@ cmake .. -G"Unix Makefiles" \
   -DWITH_OpenH264_DECODER=OFF \
   -DWITH_JPEG_ENCODER=ON \
   -DWITH_JPEG_DECODER=ON \
-  -DWITH_OpenJPEG_ENCODER=OFF \
-  -DWITH_OpenJPEG_DECODER=OFF \
+  -DWITH_OpenJPEG_ENCODER=ON \
+  -DWITH_OpenJPEG_DECODER=ON \
   -DCMAKE_PREFIX_PATH=${PREFIX} \
   -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
   -DCMAKE_SYSTEM_NAME=Android \
@@ -49,6 +49,7 @@ cmake .. -G"Unix Makefiles" \
   -DLIBDE265_LIBRARY=${PREFIX}/lib/libde265.so \
   -DJPEG_INCLUDE_DIR=${PREFIX}/include \
   -DJPEG_LIBRARY=${PREFIX}/lib/libjpeg.so \
+  -DOpenJPEG_DIR=${LIBDIR}/cmake/openjpeg-2.5 \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   -DCMAKE_BUILD_TYPE=Release
 

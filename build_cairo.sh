@@ -3,9 +3,9 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 . $SCRIPTDIR/env.sh
 . $SCRIPTDIR/build_common.sh
 
-URL=https://download.savannah.gnu.org/releases/freetype/freetype-$FREETYPE_VERSION.tar.gz
-DOWNLOAD_FILE=${DOWNLOADDIR}/freetype-$FREETYPE_VERSION.tar.gz
-EXTRACT_DIR=$SRCDIR/freetype-$FREETYPE_VERSION
+URL=https://www.cairographics.org/releases/cairo-$CAIRO_VERSION.tar.xz
+DOWNLOAD_FILE=${DOWNLOADDIR}/cairo-$CAIRO_VERSION.tar.xz
+EXTRACT_DIR=$SRCDIR/cairo-$CAIRO_VERSION
 
 download $URL $DOWNLOAD_FILE
 extract $DOWNLOAD_FILE $EXTRACT_DIR

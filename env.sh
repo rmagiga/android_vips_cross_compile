@@ -27,6 +27,7 @@ export HARFBUZZ_VERSION="12.1.0"
 export FREETYPE_VERSION="2.14.1"
 export LIBXML2_VERSION="2.15.0"
 export PANGO_VERSION="1.57.0"
+export PIXMAN_VERSION="0.46.4"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
@@ -74,6 +75,7 @@ COMMON_FLAGS=(
     "-I$INCLUDEDIR/libxml2"
     "-I$INCLUDEDIR/harfbuzz"
     "-I$INCLUDEDIR/librsvg-2.0"
+    "-I$INCLUDEDIR/pixman-1"
 )
 
 # INCLUDEARGSを構築

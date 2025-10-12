@@ -19,8 +19,9 @@ wsl --install -d Ubuntu-22.04
 ビルドに必要なパッケージのインストール
 ```
 sudo apt update && sudo apt upgrade -y
-sudo apt install build-essential pkg-config libglib2.0-dev libexpat1-dev python3-pip unzip libssl-dev -y
+sudo apt install libglib2.0-dev libssl-dev -y
 ```
+sudo apt install build-essential pkg-config libglib2.0-dev libexpat1-dev python3-pip unzip libssl-dev -y
 
 mesonとninjaのインストール
 ```
