@@ -29,10 +29,11 @@ $SCRIPTDIR/build_libheif.sh
 
 # svg
 $SCRIPTDIR/build_libxml2.sh
+$SCRIPTDIR/build_libbz2.sh
 $SCRIPTDIR/build_freetype2.sh
-$SCRIPTDIR/build_harfbuzz.sh
 $SCRIPTDIR/build_pixman.sh
 $SCRIPTDIR/build_cairo.sh
+$SCRIPTDIR/build_harfbuzz.sh
 $SCRIPTDIR/build_pango.sh
 $SCRIPTDIR/build_librsvg.sh
 
