@@ -12,6 +12,9 @@ $SCRIPTDIR/build_libjxl.sh
 $SCRIPTDIR/build_openjpeg.sh
 # libspng
 $SCRIPTDIR/build_libspng.sh
+# libpng
+$SCRIPTDIR/build_zlib.sh
+$SCRIPTDIR/build_libpng.sh
 # libtiff
 $SCRIPTDIR/build_libtiff.sh
 # gif

@@ -28,6 +28,8 @@ export FREETYPE_VERSION="2.14.1"
 export LIBXML2_VERSION="2.15.0"
 export PANGO_VERSION="1.57.0"
 export PIXMAN_VERSION="0.46.4"
+export ZLIB_VERSION="1.3.1"
+export LIBPNG_VERSION="1.6.50"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
