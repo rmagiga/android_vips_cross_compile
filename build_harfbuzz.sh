@@ -3,13 +3,16 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 . $SCRIPTDIR/env.sh
 . $SCRIPTDIR/build_common.sh
 
+URL=https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${HARFBUZZ_VERSION}.tar.gz
 DOWNLOAD_FILE=${DOWNLOADDIR}/harfbuzz-$HARFBUZZ_VERSION.tar.gz
-download https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${HARFBUZZ_VERSION}.tar.gz $DOWNLOAD_FILE
-extract $DOWNLOAD_FILE $SRCDIR/harfbuzz-$HARFBUZZ_VERSION
+EXTRACT_DIR=$SRCDIR/harfbuzz-$HARFBUZZ_VERSION
 
-create_cross_file $SCRIPTDIR/cross_file.txt.template $SRCDIR/harfbuzz-$HARFBUZZ_VERSION/cross_file.txt
+download $URL $DOWNLOAD_FILE
+extract $DOWNLOAD_FILE $EXTRACT_DIR
 
-cd $SRCDIR/harfbuzz-$HARFBUZZ_VERSION
+create_cross_file $SCRIPTDIR/cross_file.txt.template $EXTRACT_DIR/cross_file.txt
+
+cd $EXTRACT_DIR
 meson setup build --cross-file cross_file.txt
 cd build
 ninja

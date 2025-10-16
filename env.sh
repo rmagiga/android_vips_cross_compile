@@ -24,9 +24,14 @@ export LIBCGIF_VERSION="0.5.0"
 export CAIRO_VERSION="1.18.4"
 export LIBRSVG_VERSION="2.61.1"
 export HARFBUZZ_VERSION="12.1.0"
+export BZIP2_VERSION="1.0.8"
 export FREETYPE_VERSION="2.14.1"
 export LIBXML2_VERSION="2.15.0"
 export PANGO_VERSION="1.57.0"
+export PIXMAN_VERSION="0.46.4"
+export ZLIB_VERSION="1.3.1"
+export LIBPNG_VERSION="1.6.50"
+export QUANTIZR_VERSION="1.4.3"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
@@ -46,7 +51,7 @@ export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 export BUILD_SYS=x86_64-linux-gnu
 export SYSROOT=$TOOLCHAIN/sysroot/
 
-export TARGET=aarch64-linux-android
+export TARGET="aarch64-linux-android"
 
 export AR=$TOOLCHAIN/bin/llvm-ar
 export CC=$TOOLCHAIN/bin/$TARGET$ANDROID_API-clang
@@ -56,12 +61,50 @@ export LD=$TOOLCHAIN/bin/ld
 export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
 export STRIP=$TOOLCHAIN/bin/llvm-strip
 
+
+
 export LD_LIBRARY_PATH=$LIBDIR
-export CFLAGS="-fPIC -I$INCLUDEDIR -I$INCLUDEDIR/glib-2.0 -I$INCLUDEDIR/libpng16 -I$INCLUDEDIR/freetype2 -I$INCLUDEDIR/cairo -I$INCLUDEDIR/pango-1.0 -I$INCLUDEDIR/libxml2 -I$INCLUDEDIR/harfbuzz -I$INCLUDEDIR/librsvg-2.0 -I$LIBDIR/glib-2.0/include"
+
+# 共通のコンパイルフラグリスト(textstyleはネストエラーのため除外しています)
+COMMON_FLAGS=(
+    "-fPIC"
+    "-I$INCLUDEDIR"
+    "-I$INCLUDEDIR/glib-2.0"
+    "-I$LIBDIR/glib-2.0/include"
+    "-I$INCLUDEDIR/openjpeg-2.5"
+    "-I$INCLUDEDIR/libpng16"
+    "-I$INCLUDEDIR/freetype2"
+    "-I$INCLUDEDIR/cairo"
+    "-I$INCLUDEDIR/pango-1.0"
+    "-I$INCLUDEDIR/libxml2"
+    "-I$INCLUDEDIR/harfbuzz"
+    "-I$INCLUDEDIR/librsvg-2.0"
+    "-I$INCLUDEDIR/pixman-1"
+    "-I$INCLUDEDIR/aom"
+    "-I$INCLUDEDIR/brotli"
+    "-I$INCLUDEDIR/fontconfig"
+    "-I$INCLUDEDIR/fribidi"
+    "-I$INCLUDEDIR/gio-unix-2.0"
+    "-I$INCLUDEDIR/hwy"
+    "-I$INCLUDEDIR/jxl"
+    "-I$INCLUDEDIR/libde265"
+    "-I$INCLUDEDIR/libheif"
+    "-I$INCLUDEDIR/quantizr"
+    "-I$INCLUDEDIR/vips"
+    "-I$INCLUDEDIR/webp"
+)
+
+# INCLUDEARGSを構築
+COMMON_QUOTED=()
+for i in "${COMMON_FLAGS[@]}"; do
+    COMMON_QUOTED+=("'$i'")
+done
+
+export CFLAGS="${COMMON_FLAGS[*]}"
 export CXXFLAGS=$CFLAGS
 export LDFLAGS="-fPIC -pie -L$LD_LIBRARY_PATH"
 export LIBS="-L$LD_LIBRARY_PATH"
-export INCLUDEARGS="'-fPIC','-I$INCLUDEDIR','-I$INCLUDEDIR/glib-2.0','-I$LIBDIR/glib-2.0/include','-I$INCLUDEDIR/openjpeg-2.5','-I$INCLUDEDIR/libpng16','-I$INCLUDEDIR/freetype2','-I$INCLUDEDIR/cairo','-I$INCLUDEDIR/pango-1.0','-I$INCLUDEDIR/libxml2','-I$INCLUDEDIR/harfbuzz','-I$INCLUDEDIR/librsvg-2.0'"
+export INCLUDEARGS=$(IFS=,; echo "${COMMON_QUOTED[*]}")
 
 export PKG_CONFIG=/usr/bin/pkg-config
 export PKG_CONFIG_PATH=$LIBDIR/pkgconfig

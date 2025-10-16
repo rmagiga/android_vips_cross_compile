@@ -3,13 +3,15 @@ SCRIPTDIR=$(cd $(dirname $0); pwd)
 . $SCRIPTDIR/env.sh
 . $SCRIPTDIR/build_common.sh
 
-https://bitbucket.org/multicoreware/x265_git/downloads/x265_4.1.tar.gz
+URL=https://bitbucket.org/multicoreware/x265_git/downloads/x265_$LIBX265_VERSION.tar.gz
 DOWNLOAD_FILE=${DOWNLOADDIR}/x265-$LIBX265_VERSION.tar.gz
-download https://bitbucket.org/multicoreware/x265_git/downloads/x265_$LIBX265_VERSION.tar.gz $DOWNLOAD_FILE
-extract $DOWNLOAD_FILE $SRCDIR/x265-$LIBX265_VERSION
+EXTRACT_DIR=$SRCDIR/x265-$LIBX265_VERSION
+
+download $URL $DOWNLOAD_FILE
+extract $DOWNLOAD_FILE $EXTRACT_DIR
 
 # Androidでのpthreadライブラリリンクエラーを修正するパッチを適用
-cd $SRCDIR/x265-$LIBX265_VERSION
+cd $EXTRACT_DIR
 patch -p1 < $SCRIPTDIR/x265_android_pthread.patch
 
 cd source
