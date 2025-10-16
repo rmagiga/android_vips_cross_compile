@@ -31,6 +31,7 @@ export PANGO_VERSION="1.57.0"
 export PIXMAN_VERSION="0.46.4"
 export ZLIB_VERSION="1.3.1"
 export LIBPNG_VERSION="1.6.50"
+export QUANTIZR_VERSION="1.4.3"
 
 # Android NDK
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
@@ -64,7 +65,7 @@ export STRIP=$TOOLCHAIN/bin/llvm-strip
 
 export LD_LIBRARY_PATH=$LIBDIR
 
-# 共通のコンパイルフラグリスト
+# 共通のコンパイルフラグリスト(textstyleはネストエラーのため除外しています)
 COMMON_FLAGS=(
     "-fPIC"
     "-I$INCLUDEDIR"
@@ -79,6 +80,18 @@ COMMON_FLAGS=(
     "-I$INCLUDEDIR/harfbuzz"
     "-I$INCLUDEDIR/librsvg-2.0"
     "-I$INCLUDEDIR/pixman-1"
+    "-I$INCLUDEDIR/aom"
+    "-I$INCLUDEDIR/brotli"
+    "-I$INCLUDEDIR/fontconfig"
+    "-I$INCLUDEDIR/fribidi"
+    "-I$INCLUDEDIR/gio-unix-2.0"
+    "-I$INCLUDEDIR/hwy"
+    "-I$INCLUDEDIR/jxl"
+    "-I$INCLUDEDIR/libde265"
+    "-I$INCLUDEDIR/libheif"
+    "-I$INCLUDEDIR/quantizr"
+    "-I$INCLUDEDIR/vips"
+    "-I$INCLUDEDIR/webp"
 )
 
 # INCLUDEARGSを構築
