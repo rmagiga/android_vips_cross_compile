@@ -16,13 +16,13 @@ else
 fi
 
 # rustがインストールされていなければインストール
-if [ -d "$HOME/.cargo" ]; then
+if [ -d "$HOME/.cargo" ] && [ -d "$HOME/.rustup" ]; then
     echo "Rust is already installed."
 else
     echo "Installing Rust..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --target aarch64-linux-android
-    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     source ~/.bashrc
+    rustup target add aarch64-linux-android
+    unset CARGO_BUILD_TARGET
+    cargo install cargo-c
 fi
-
-cargo install cargo-c
