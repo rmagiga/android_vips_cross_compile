@@ -23,4 +23,5 @@ linker = "$CC"
 rustflags = ["-L", "$SYSROOT/usr/lib/$TARGET/$ANDROID_API"]
 EOF
 
+export CARGO_BUILD_TARGET=$TARGET
 cargo cinstall --target=$TARGET --prefix=$PREFIX --release
