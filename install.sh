@@ -22,7 +22,7 @@ else
     echo "Installing Rust..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     source ~/.bashrc
-    rustup target add aarch64-linux-android
+    rustup target add $TARGET
     unset CARGO_BUILD_TARGET
     cargo install cargo-c
 fi
