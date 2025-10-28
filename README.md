@@ -121,7 +121,5 @@ OSのパッケージのインストール、Pythonの仮想環境の構築、rus
 ## libvipsのビルド・インストール
 
 ```
-git clone https://github.com/rmagiga/android_vips_cross_compile.git
-cd android_vips_cross_compile
 ./build_all.sh
 ```

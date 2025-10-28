@@ -21,7 +21,7 @@ if [ -d "$HOME/.cargo" ] && [ -d "$HOME/.rustup" ]; then
 else
     echo "Installing Rust..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source ~/.bashrc
+    . "$HOME/.cargo/env"
     rustup target add $TARGET
     cargo install cargo-c
 fi
