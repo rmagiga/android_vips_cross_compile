@@ -109,5 +109,7 @@ export INCLUDEARGS=$(IFS=,; echo "${COMMON_QUOTED[*]}")
 export PKG_CONFIG=/usr/bin/pkg-config
 export PKG_CONFIG_PATH=$LIBDIR/pkgconfig
 
-# rust
-export CARGO_BUILD_TARGET=$TARGET
+# python設定
+export VIRTUAL_NAME=build_meson
+export VIRTUAL_ENV=$HOME/$VIRTUAL_NAME
+export PATH=$VIRTUAL_ENV/bin:$PATH

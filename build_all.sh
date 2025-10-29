@@ -19,6 +19,7 @@ $SCRIPTDIR/build_libpng.sh
 $SCRIPTDIR/build_libtiff.sh
 # gif
 $SCRIPTDIR/build_libcgif.sh
+$SCRIPTDIR/build_quantizr.sh
 #webp
 $SCRIPTDIR/build_libwebp.sh
 # libheif
@@ -29,7 +30,7 @@ $SCRIPTDIR/build_libheif.sh
 
 # svg
 $SCRIPTDIR/build_libxml2.sh
-$SCRIPTDIR/build_libbz2.sh
+$SCRIPTDIR/build_libbzip2.sh
 $SCRIPTDIR/build_freetype2.sh
 $SCRIPTDIR/build_pixman.sh
 $SCRIPTDIR/build_cairo.sh

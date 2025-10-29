@@ -87,40 +87,39 @@ vips 8.17.2
 
 ## WSL上にUbuntuをインストール
 
+すでにWSL2を使用できるものとします。
+
+Ubuntu 22.04をインストールします。コマンドラインを開いて、以下のコマンドを入力してください。
 ```
 wsl --install -d Ubuntu-22.04
 ```
-
 起動したら、ユーザーとパスワードを設定してください。
+
+Ubuntu22.04を初期化したい場合は、以下を入力してください。
+```
+wsl --unregister Ubuntu-22.04
+```
 
 ## Ubuntu パッケージ設定
 
 ビルドに必要なパッケージのインストール
 ```
-sudo apt update && sudo apt upgrade -y
-sudo apt install libglib2.0-dev libssl-dev gettext unzip -y
+git clone https://github.com/rmagiga/android_vips_cross_compile.git
+cd android_vips_cross_compile
 ```
 
-mesonとninjaのインストール
+ビルド環境を構築します。
+OSのパッケージのインストール、Pythonの仮想環境の構築、rustのインストール、Android NDKのダウンロード・配置を行います。
+スクリプト内部で、sudoを実行しているので、sudoに対する権限が必要です。
+
 ```
-python3 -m pip install meson ninja tomli
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+./install.sh
+./setup_ndk.sh
 ```
 
-rustのインストール
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-rustup target add aarch64-linux-android
-cargo install cargo-c
-```
 
 ## libvipsのビルド・インストール
 
 ```
-git clone https://github.com/rmagiga/android_vips_cross_compile.git
-cd android_vips_cross_compile
 ./build_all.sh
 ```
