@@ -121,5 +121,6 @@ OSのパッケージのインストール、Pythonの仮想環境の構築、rus
 ## libvipsのビルド・インストール
 
 ```
+. "$HOME/.cargo/env"
 ./build_all.sh
 ```
