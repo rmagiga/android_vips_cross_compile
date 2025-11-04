@@ -38,4 +38,8 @@ $SCRIPTDIR/build_harfbuzz.sh
 $SCRIPTDIR/build_pango.sh
 $SCRIPTDIR/build_librsvg.sh
 
+# libvips
 $SCRIPTDIR/build_libvips.sh
+
+# Copy dependent libraries
+$SCRIPTDIR/copy_libs.sh
