@@ -124,3 +124,86 @@ OSのパッケージのインストール、Pythonの仮想環境の構築、rus
 . "$HOME/.cargo/env"
 ./build_all.sh
 ```
+
+## 変数と変数の説明
+
+env.shにあるスクリプトで使用するバージョンやパスの設定です。
+
+| 変数 | 説明 | デフォルト値 |
+|---|---|---|
+| DOWNLOADDIR | ダウンロードディレクトリ | $HOME/Downloads |
+| SRCDIR | ソースコードディレクトリ | $HOME/src |
+| OUTDIR | 出力ディレクトリ | $HOME/local |
+| NDK_VERSION | Android NDKのバージョン | r27d |
+| ANDROID_API | Android APIレベル | 21 |
+| LIBVIPS_VERSION | libvipsのバージョン | 8.17.2 |
+| EXPAT_VERSION | expatのバージョン | 2_7_3 |
+| LIBJPEG_TURBO_VERSION | libjpeg-turboのバージョン | 3.1.2 |
+| LIBJXL_VERSION | libjxlのバージョン | 0.11.1 |
+| OPENJPEG_VERSION | OpenJPEGのバージョン | 2.5.4 |
+| LIBSPNG_VERSION | libspngのバージョン | 0.7.4 |
+| LIBTIFF_VERSION | libtiffのバージョン | 4.7.1 |
+| LIBAOM_VERSION | libaomのバージョン | 3.13.1 |
+| LIBDE265_VERSION | libde265のバージョン | 1.0.16 |
+| LIBX265_VERSION | libx265のバージョン | 4.1 |
+| LIBHEIF_VERSION | libheifのバージョン | 1.20.2 |
+| LIBWEBP_VERSION | libwebpのバージョン | 1.6.0 |
+| LIBCGIF_VERSION | libcgifのバージョン | 0.5.0 |
+| CAIRO_VERSION | Cairoのバージョン | 1.18.4 |
+| LIBRSVG_VERSION | librsvgのバージョン | 2.61.1 |
+| HARFBUZZ_VERSION | HarfBuzzのバージョン | 12.1.0 |
+| BZIP2_VERSION | bzip2のバージョン | 1.0.8 |
+| FREETYPE_VERSION | FreeTypeのバージョン | 2.14.1 |
+| LIBXML2_VERSION | libxml2のバージョン | 2.15.0 |
+| PANGO_VERSION | Pangoのバージョン | 1.57.0 |
+| PIXMAN_VERSION | Pixmanのバージョン | 0.46.4 |
+| ZLIB_VERSION | zlibのバージョン | 1.3.1 |
+| LIBPNG_VERSION | libpngのバージョン | 1.6.50 |
+| QUANTIZR_VERSION | quantizrのバージョン | 1.4.3 |
+| ANDROID_SDK_ROOT | Android SDKのルートディレクトリ | $HOME/Android/Sdk |
+
+
+## ビルド済みライブラリ
+
+ビルド済みファイルは、デフォルトでは、**$HOME/local** に出力されます。  
+共有ライブラリはその配下の **lib** ディレクトリ内にあります。ただし、出力するライブラリによっては、その配下にディレクトリが作成され配置されます。
+
+後で取得しやすいように、**$HOME/dist** に **libvips** に必要な共有ライブラリをコピーしています。
+
+```
+$ ls -1 ~/dist
+libbrotlicommon.so
+libbrotlidec.so
+libcairo.so
+libcgif.so
+libexpat.so
+libffi.so
+libfontconfig.so
+libfreetype.so
+libfribidi.so
+libgio-2.0.so
+libglib-2.0.so
+libgmodule-2.0.so
+libgobject-2.0.so
+libharfbuzz.so
+libiconv.so
+libintl.so
+libjpeg.so
+libopenjp2.so
+libpango-1.0.so
+libpangocairo-1.0.so
+libpangoft2-1.0.so
+libpcre2-8.so
+libpixman-1.so
+libpng16.so
+libquantizr.so
+librsvg-2.so
+libsharpyuv.so
+libspng.so
+libtiff.so
+libwebp.so
+libwebpdemux.so
+libwebpmux.so
+libxml2.so
+libz.so
+```
