@@ -83,7 +83,7 @@ vips 8.17.2
 
 - Windows 11 25H2
 - WSL2
-- Ubuntu 22.04
+- Ubuntu 22.04 or 24.04
 
 ## WSL上にUbuntuをインストール
 
