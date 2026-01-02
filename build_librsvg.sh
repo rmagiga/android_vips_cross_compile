@@ -20,6 +20,7 @@ meson setup build --cross-file cross_file.txt \
   -Dpixbuf-loader=disabled \
   -Davif=disabled \
   -Ddocs=disabled \
+  -Drsvg-convert=disabled \
   -Dtriplet=$TARGET
 cd build
 ninja
