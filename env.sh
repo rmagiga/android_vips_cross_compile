@@ -30,7 +30,7 @@ export LIBXML2_VERSION="2.15.1"
 export PANGO_VERSION="1.57.0"
 export PIXMAN_VERSION="0.46.4"
 export ZLIB_VERSION="1.3.1"
-export LIBPNG_VERSION="1.6.50"
+export LIBPNG_VERSION="1.6.53"
 export QUANTIZR_VERSION="1.4.3"
 
 # Android NDK
