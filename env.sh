@@ -6,7 +6,7 @@ export OUTDIR=$HOME/local
 
 # version
 export NDK_VERSION=r27d
-export ANDROID_API=21
+export ANDROID_API=34
 
 export LIBVIPS_VERSION="8.18.0"
 export EXPAT_VERSION="2_7_3"
