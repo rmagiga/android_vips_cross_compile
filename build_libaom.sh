@@ -14,7 +14,7 @@ extract $DOWNLOAD_FILE $EXTRACT_DIR
 cd $EXTRACT_DIR
 mkdir build-android && cd build-android
 cmake .. -G"Unix Makefiles" \
-  -DANDROID_ABI=arm64-v8a \
+  -DANDROID_ABI=$ANDROID_ABI \
   -DANDROID_PLATFORM=android-${ANDROID_API} \
   -DCMAKE_ASM_FLAGS="--target=${TARGET}${ANDROID_API}" \
   -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \

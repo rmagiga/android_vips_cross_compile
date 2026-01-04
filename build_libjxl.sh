@@ -16,7 +16,7 @@ cd $EXTRACT_DIR
 
 mkdir -p build && cd build
 cmake .. -G"Unix Makefiles" \
-  -DANDROID_ABI=arm64-v8a \
+  -DANDROID_ABI=$ANDROID_ABI \
   -DANDROID_ARM_MODE=arm \
   -DANDROID_PLATFORM=android-${ANDROID_API} \
   -DANDROID_TOOLCHAIN=${TOOLCHAIN} \

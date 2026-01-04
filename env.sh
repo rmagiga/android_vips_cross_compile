@@ -42,12 +42,12 @@ export TOOLCHAIN=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64
 
 export PATH="$TOOLCHAIN/bin":$PATH
 
+export ANDROID_ABI="arm64-v8a"
 
 # ライブラリ設定
 export PREFIX=$OUTDIR
 export LIBDIR=$PREFIX/lib
 export INCLUDEDIR=$PREFIX/include
-export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
 export BUILD_SYS=x86_64-linux-gnu
 export SYSROOT=$TOOLCHAIN/sysroot/
 
@@ -60,8 +60,6 @@ export CXX=$TOOLCHAIN/bin/$TARGET$ANDROID_API-clang++
 export LD=$TOOLCHAIN/bin/ld
 export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
 export STRIP=$TOOLCHAIN/bin/llvm-strip
-
-
 
 export LD_LIBRARY_PATH=$LIBDIR
 
@@ -106,8 +104,8 @@ export LDFLAGS="-fPIC -pie -L$LD_LIBRARY_PATH"
 export LIBS="-L$LD_LIBRARY_PATH"
 export INCLUDEARGS=$(IFS=,; echo "${COMMON_QUOTED[*]}")
 
-export PKG_CONFIG=/usr/bin/pkg-config
-export PKG_CONFIG_PATH=$LIBDIR/pkgconfig
+export PKG_CONFIG_LIBDIR=$LIBDIR/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR=$TOOLCHAIN/sysroot
 
 # python設定
 export VIRTUAL_NAME=build_meson

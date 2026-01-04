@@ -14,7 +14,7 @@ cd $EXTRACT_DIR
 ./autogen.sh
 ./configure --host=$TARGET \
 	--prefix=$PREFIX \
-	--enable-static \
+	--disable-static \
 	--enable-shared
 
 make -j$(nproc)

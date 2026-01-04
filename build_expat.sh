@@ -15,7 +15,7 @@ cd $EXTRACT_DIR/expat
 ./buildconf.sh
 ./configure --host=$TARGET \
 	--prefix=$PREFIX \
-	--enable-static \
+	--disable-static \
 	--enable-shared
 
 make -j$(nproc)

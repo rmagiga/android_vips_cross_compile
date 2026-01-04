@@ -14,7 +14,7 @@ cd $EXTRACT_DIR
 export CPPFLAGS="$CXXFLAGS"
 ./configure --host=$TARGET \
   --prefix=$PREFIX \
-  --enable-static \
+	--disable-static \
   --enable-shared \
   --with-zlib-prefix=$PREFIX \
   --with-pkgconfigdir=$LIBDIR/pkgconfig

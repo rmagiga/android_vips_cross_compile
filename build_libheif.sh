@@ -15,7 +15,7 @@ mkdir build-android && cd build-android
 cmake .. -G"Unix Makefiles" \
   -DCMAKE_ASM_FLAGS="--target=${TARGET}${ANDROID_API}" \
   -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
-  -DANDROID_ABI=arm64-v8a \
+  -DANDROID_ABI=$ANDROID_ABI \
   -DANDROID_ARM_MODE=arm \
   -DANDROID_PLATFORM=android-${ANDROID_API} \
   -DENABLE_PLUGIN_LOADING=OFF \
@@ -35,7 +35,7 @@ cmake .. -G"Unix Makefiles" \
   -DWITH_OpenJPEG_ENCODER=ON \
   -DWITH_OpenJPEG_DECODER=ON \
   -DCMAKE_PREFIX_PATH=${PREFIX} \
-  -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
+  -DCMAKE_ANDROID_ARCH_ABI=$ANDROID_ABI \
   -DCMAKE_SYSTEM_NAME=Android \
   -DCMAKE_SYSTEM_VERSION=${ANDROID_API} \
   -DCMAKE_ANDROID_NDK=${ANDROID_NDK_HOME} \

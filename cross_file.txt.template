@@ -6,7 +6,7 @@ outdir = '{{PREFIX}}'
 [binaries]
 ar = '{{TOOLCHAIN}}/bin/llvm-ar'
 c = '{{TOOLCHAIN}}/bin/aarch64-linux-android{{ANDROID_API}}-clang'
-as = '{{TOOLCHAIN}}/bin/llvm-ar'
+as = '{{TOOLCHAIN}}/bin/llvm-as'
 cpp = '{{TOOLCHAIN}}/bin/aarch64-linux-android{{ANDROID_API}}-clang++'
 ranlib = '{{TOOLCHAIN}}/bin/llvm-ranlib'
 strip = '{{TOOLCHAIN}}/bin/llvm-strip'
@@ -16,8 +16,7 @@ pkg-config = '/usr/bin/pkg-config'
 
 [properties]
 sys_root = '{{TOOLCHAIN}}/sysroot'
-pkg_config_lib_dir = '{{LIBDIR}}/pkgconfig'
-pkg_config_path = '{{LIBDIR}}/pkgconfig'
+needs_exe_wrapper=true
 
 [host_machine]
 system = 'android'
@@ -33,4 +32,4 @@ c_link_args = ['-fPIE','-L{{LIBDIR}}']
 
 cmake_prefix_path = '{{PREFIX}}'
 
-default_library = 'both'
+default_library = 'shared'
