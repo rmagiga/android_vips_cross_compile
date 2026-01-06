@@ -17,6 +17,7 @@ get_deps() {
             fi
         done
     fi
+    deps_list+=("$lib")
 }
 
 deps_list=()
@@ -32,6 +33,11 @@ for lib in "${deps_list[@]}"; do
         echo "Copied $lib to $HOME/dist/ and set permissions to 755"
     fi
 done
+
+# Create a directory for headers
+mkdir -p $HOME/dist/include
+# Copy header files
+cp $PREFIX/include/vips/*.h $HOME/dist/include/
 
 # Compress the dist folder into a tar.gz archive
 tar czf $HOME/dist.tar.gz -C $HOME dist/
